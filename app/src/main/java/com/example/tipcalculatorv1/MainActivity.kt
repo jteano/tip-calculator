@@ -33,16 +33,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
     fun calculate() {
+        tipCalc = TipCalculator()
         val billString: String = amountBill.text.toString()
         val tipString: String = amountTip.text.toString()
         try {
 // convert billString and tipString to floats
             val billAmount = billString.toFloat()
             val tipPercent = tipString.toFloat()
-            tipCalc = TipCalculator(tipPercent, billAmount)
 // update the Model
-            //tipCalc.bill=billAmount
-            //tipCalc.tip=tipPercent
+            tipCalc.bill=billAmount
+            tipCalc.tip=tipPercent
 // tipCalc.bill=billAmount
 // ask Model to calculate tip and total amounts
             val tip = tipCalc.tipAmount()
