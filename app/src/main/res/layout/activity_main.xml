@@ -5,13 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
     tools:context=".MainActivity">
+
     <TextView
         android:id="@+id/label_bill"
         style="@style/LabelStyle"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:minWidth="120dp"
-        android:text="@string/label_bill"/>
+        android:text="@string/label_bill" />
 
     <EditText
         android:id="@+id/amount_bill"
@@ -22,14 +23,15 @@
         android:layout_toRightOf="@+id/label_bill"
         android:hint="@string/amount_bill_hint"
         android:inputType="numberDecimal" />
+
     <TextView
         android:id="@+id/label_tip_percent"
         style="@style/LabelStyle"
-        android:layout_marginTop="20dp"
         android:layout_below="@+id/label_bill"
         android:layout_alignLeft="@+id/label_bill"
         android:layout_alignRight="@+id/label_bill"
-        android:text="@string/label_tip_percent"/>
+        android:layout_marginTop="20dp"
+        android:text="@string/label_tip_percent" />
 
     <EditText
         android:id="@+id/amount_tip_percent"
@@ -82,12 +84,4 @@
         android:layout_alignBottom="@+id/label_total"
         android:layout_toRightOf="@+id/label_total" />
 
-    <Button
-        android:id="@+id/button_calculator"
-        style="@style/ButtonStyle"
-        android:layout_below="@+id/amount_total"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:onClick="calculate"
-        android:text="@string/button_calculator" />
 </RelativeLayout>
