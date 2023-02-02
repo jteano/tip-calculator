@@ -10,7 +10,7 @@ import java.text.NumberFormat
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val tipCalc= TipCalculator(0.0f,0.0)
+    private val tipCalc= TipCalculator(0.0f,0.0, 1)
     var money = NumberFormat.getCurrencyInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,11 +36,22 @@ class MainActivity : AppCompatActivity() {
                                        before: Int, count: Int) {
             }
         })
+
+        binding.amountPartySize.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) { calculate() }
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                           count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+            }
+        })
     }
     fun calculate() {
         // billAmount value set based on amountBill TextView value
         var billAmount: Double = 0.0
         var billTip: Float = 0.0f
+        var partySize: Int = 0
 
         // For Bill
         val amountBill1 = binding.amountBill
@@ -65,6 +76,16 @@ class MainActivity : AppCompatActivity() {
         else
             billTip = stringTipPercent.toFloat()
         tipCalc.tip=.01f * billTip
+
+        // For Party Size
+        val partySize1 = binding.amountPartySize
+        val stringPartySize = partySize1.text.toString()
+
+        if (stringPartySize.isEmpty())
+            partySize = 1
+        else
+            partySize = stringPartySize.toInt()
+        tipCalc.size=partySize
 
         val amountTip: String = money.format(tipCalc.tipAmount()).toString()
 
