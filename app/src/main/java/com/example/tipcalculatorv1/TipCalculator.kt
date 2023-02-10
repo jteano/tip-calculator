@@ -23,6 +23,6 @@ class TipCalculator(newTip: Float=0.0f, newBill: Double=0.0, newSize: Int=1) {
         return (bill * tip) / size
     }
     fun totalAmount(): Double {
-        return (bill + tipAmount()) / size
+        return bill / size + tipAmount()
     }
 }
